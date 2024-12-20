@@ -1,0 +1,29 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+  # Step 1: Build the microservice
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['clean', 'install', '-DskipTests']
+    dir: '.'
+
+  # Step 2: Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.0', '.']
+
+  # Step 3: Push Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.0']
+
+  # Step 4: Deploy to GKE
+#  - name: 'gcr.io/cloud-builders/kubectl'
+#    args:
+#      - 'set'
+#      - 'image'
+#      - '--namespace=health-app'
+#      - 'deployment/aggregator'
+#      - 'aggregator=us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.0'
+#    env:
+#      - 'CLOUDSDK_COMPUTE_REGION=us-east1-b'
+#      - 'CLOUDSDK_CONTAINER_CLUSTER=cloud-computing-cw'
+#    dir: '.'
