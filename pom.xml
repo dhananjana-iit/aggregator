@@ -50,7 +50,7 @@
             <groupId>com.amazon.redshift</groupId>
             <artifactId>redshift-jdbc42</artifactId>
             <version>2.1.0.12</version>
-            <scope>system</scope>
+            <scope>runtime</scope>
             <systemPath>${project.basedir}/lib/redshift-jdbc42-2.1.0.12.jar</systemPath>
         </dependency>
 

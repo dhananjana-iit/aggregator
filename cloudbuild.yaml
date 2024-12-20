@@ -9,11 +9,11 @@ steps:
 
   # Step 2: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.0', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.1', '.']
 
   # Step 3: Push Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.0']
+    args: ['push', 'us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.1']
 
   # Step 4: Deploy to GKE
 #  - name: 'gcr.io/cloud-builders/kubectl'
@@ -22,7 +22,7 @@ steps:
 #      - 'image'
 #      - '--namespace=health-app'
 #      - 'deployment/aggregator'
-#      - 'aggregator=us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.0'
+#      - 'aggregator=us-central1-docker.pkg.dev/cloudcomputing-cw-bda/cloud-computing/aggregator:2.0.1'
 #    env:
 #      - 'CLOUDSDK_COMPUTE_REGION=us-east1-b'
 #      - 'CLOUDSDK_CONTAINER_CLUSTER=cloud-computing-cw'
